@@ -293,8 +293,22 @@ h1 a:hover {
 /* =========================================================
    TECNOLOGIAS
    ========================================================= */
+
+/* Ícones das tecnologias — tamanho fixo para não ficarem gigantes */
+.tech-card .img {
+    margin-bottom: 16px;
+}
+
+.tech-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
 .tecnologias {
-    background-color: #e9e9d6;
+    background-color: #F2F2F2;
     padding: 100px 0;
 }
 
@@ -302,6 +316,7 @@ h1 a:hover {
     max-width: 620px;
     margin: 0 auto 55px auto;
     text-align: center;
+    ;
 }
 
 .section-header h2 {
@@ -324,10 +339,10 @@ h1 a:hover {
 .tech-card {
     background-color: #bdd3de63;
     border-radius: 14px;
-    padding: 90px 24px;
+    padding: 100px 24px;
     text-align: center;
     box-shadow: 0 6px 18px rgba(29, 37, 43, 0.08);
-    transition: transform 1s ease, box-shadow .3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tech-card:hover {
@@ -348,8 +363,8 @@ h1 a:hover {
 }
 
 .tech-icon {
-    width: 64px;
-    height: 64px;
+    width: 40px;
+    height: 40px;
     margin: 0 auto 18px auto;
     border-radius: 16px;
     display: flex;
@@ -493,6 +508,11 @@ footer {
     .tech-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+    }
+
+    .tech-card img {
+        width: 52px;
+        height: 52px;
     }
 
     .section-header h2 {
