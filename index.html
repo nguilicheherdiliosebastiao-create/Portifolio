@@ -11,6 +11,13 @@
     <header id="header">
         <div class="container">
             <h1><a href="#home" class="logo">Herdílio Nguiliche</a></h1>
+
+            <button id="navToggle" class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav id="navMenu" class="nav-menu">
                 <ul>
                     <li><a href="#home" class="nav-link">Início</a></li>
@@ -21,6 +28,9 @@
             </nav>
         </div>
     </header>
+
+    <div id="navOverlay" class="nav-overlay"></div>
+
     <main>
         <section id="home" class="home">
             <div class="container">
@@ -30,7 +40,30 @@
             </div>
 
         </section>
+         <section id="sobre" class="sobre">
+            <div class="container sobre-grid">
+ 
+                <div class="sobre-text reveal">
+                    <p class="section-tag">Sobre mim</p>
+                    <h2>Quem sou eu</h2>
+ 
+                    <p>Olá! Eu sou Herdilio Sebastião Nguiliche, estudante da Licenciatura em Informática, com foco no desenvolvimento de software.</p>
+                    <p>Estou em constante aprendizagem e procuro sempre aprimorar os meus conhecimentos através de cursos, projetos, eventos e experiências práticas. Tenho maior interesse pelo desenvolvimento web, utilizando tecnologias como HTML, CSS e JavaScript, além de conhecimentos em Java e Python.</p>
+                    <p>Atualmente, também estou a aprofundar os meus conhecimentos através de um curso de Desenvolvimento Web e Redes de Computadores.</p>
+                    <p>Sou uma pessoa colaborativa, com facilidade para trabalhar em equipa e motivada por desafios. Gosto de transformar ideias em sites, aplicações e soluções de software, procurando evoluir continuamente como desenvolvedor.</p>
+                </div>
+ 
+                <div class="sobre-image reveal">
+                    <div class="sobre-image-box">
+                        <!-- Substituir por: <img src="img/perfil.jpg" alt="Herdílio Nguiliche"> -->
+                        <span class="sobre-image-placeholder">Foto</span>
+                    </div>
+                </div>
+ 
+            </div>
+        </section>
     </main>
+
+    <script src="js/script.js"></script>
 </body>
-<script src="js/script.js"></script>    
-</html> 
+</html>

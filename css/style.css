@@ -152,6 +152,19 @@ h1 a:hover {
     min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Curva que faz o fundo escuro do Home "subir" e dar lugar ao #F0F0DF do Sobre */
+.home-wave {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 90px;
+    fill: var(--bg-page);
+    pointer-events: none;
 }
 
 .home .container {
@@ -190,6 +203,91 @@ h1 a:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* =========================================================
+   SOBRE
+   ========================================================= */
+.sobre {
+    background-color: var(--bg-page);
+    padding: 100px 0;
+}
+
+.sobre-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.section-tag {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: var(--accent-green);
+    margin-bottom: 10px;
+}
+
+.sobre-text h2 {
+    font-size: 2.2em;
+    color: var(--header-gradient-start);
+    margin-bottom: 25px;
+}
+
+.sobre-text p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: #3a3f36;
+    margin-bottom: 18px;
+}
+
+.sobre-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Caixa de imagem — substituir por <img> quando tiveres a foto */
+.sobre-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    background-color: #e3e3d1;
+    border: 2px dashed #b9b9a2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.sobre-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.sobre-image-placeholder {
+    font-size: 1.1em;
+    color: #8c8c78;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Animação de revelação ao rolar até à secção */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sobre-image.reveal {
+    transition-delay: 0.15s;
 }
 
 /* =========================================================
@@ -272,6 +370,31 @@ footer {
     .home h2 { font-size: 1.7em; }
     .home h3 { font-size: 2em; }
     .home p { font-size: 1em; }
+
+    .home-wave {
+        height: 50px;
+    }
+
+    /* A ordem no HTML já é texto -> imagem, por isso no telemóvel
+       o texto aparece primeiro de forma natural */
+    .sobre {
+        padding: 70px 0;
+    }
+
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .sobre-image-box {
+        max-width: 320px;
+        margin: 0 auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .sobre-text h2 {
+        font-size: 1.8em;
+    }
 }
 
 /* Escurece o resto da página quando o menu mobile está aberto */
@@ -300,5 +423,10 @@ footer {
         opacity: 1;
         transform: none;
         animation: none;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }

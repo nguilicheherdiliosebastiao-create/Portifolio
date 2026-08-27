@@ -66,4 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
         sections.forEach(section => sectionObserver.observe(section));
     }
 
+    /* ---------- Revela elementos (ex: secção Sobre) ao entrarem na tela ---------- */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if (revealEls.length) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        revealEls.forEach(el => revealObserver.observe(el));
+    }
+
 });
