@@ -399,6 +399,7 @@ h1 a:hover {
 /* =========================================================
    PROJETOS
    ========================================================= */
+ ========================================================= */
 .projetos {
     background-color: var(--bg-page);
     padding: 100px 0;
@@ -406,14 +407,14 @@ h1 a:hover {
  
 .projetos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 28px;
 }
  
 .projeto-card {
     background-color: #fff;
     border-radius: 16px;
-    padding: 36px 30px;
+    padding: clamp(24px, 4vw, 36px) clamp(20px, 3vw, 30px);
     box-shadow: 0 6px 18px rgba(29, 37, 43, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -434,21 +435,19 @@ h1 a:hover {
     align-items: center;
     justify-content: center;
     font-size: 1.6em;
-    margin: auto;
     margin-bottom: 20px;
 }
  
 .projeto-card h3 {
     font-size: 1.25em;
     color: var(--header-gradient-start);
-    margin: auto;
     margin-bottom: 12px;
 }
  
 .projeto-card p {
     font-size: 0.95em;
     line-height: 1.6;
-    color: black;
+    color: #4a4f42;
     margin-bottom: 22px;
     flex-grow: 1;
 }
@@ -470,7 +469,7 @@ h1 a:hover {
 /* Ligeiro desfasamento entre os cartões ao revelarem-se */
 .projetos-grid .projeto-card:nth-child(2) { transition-delay: 0.1s; }
 .projetos-grid .projeto-card:nth-child(3) { transition-delay: 0.2s; }
-
+ 
 /* =========================================================
    FOOTER
    ========================================================= */
