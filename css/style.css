@@ -1,8 +1,19 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* =========================================================
+   TIPOGRAFIA GLOBAL
+   ========================================================= */
 * {
+    
+    font-optical-sizing: auto;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    color: #000000;
+    
 }
+
 
 :root {
     --bg-page: #F0F0DF;
@@ -19,6 +30,7 @@
 body {
     background-color: var(--bg-page);
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 
 .container {
@@ -148,27 +160,42 @@ h1 a:hover {
    HOME
    ========================================================= */
 .home {
-    background-color: var(--home-bg);
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.78) 0%,
+            rgba(0, 0, 0, 0.58) 45%,
+            rgba(0, 0, 0, 0.25) 100%
+        ),
+        url("../imagens/fundo.avif");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     min-height: calc(100vh - var(--header-height));
+
     display: flex;
     align-items: center;
+
     position: relative;
     overflow: hidden;
+    font-family: "Playfair Display", serif;
 }
-
-/* Curva que faz o fundo escuro do Home "subir" e dar lugar ao #F0F0DF do Sobre */
-.home-wave {
+/* Camada escura sobre a imagem */
+.home::before {
+    content: "";
     position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 100%;
-    height: 90px;
-    fill: var(--bg-page);
-    pointer-events: none;
-}
+    inset: 0;
 
+    background: rgba(0, 0, 0, 0.65);
+
+    z-index: 0;
+}
 .home .container {
     max-width: 700px;
+    position: relative;
+    z-index: 2;
 }
 
 .home h2 {
@@ -177,12 +204,23 @@ h1 a:hover {
     opacity: 0;
     transform: translateY(20px);
     animation: fade-up 0.7s ease forwards;
+
+}
+.home h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.2em;
+    color: var(--accent-green);
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: fade-up 0.7s ease forwards;
 }
 
 .home h3 {
     font-size: 2.8em;
     color: #fff;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 20px;
     opacity: 0;
     transform: translateY(20px);
     animation: fade-up 0.7s ease 0.15s forwards;
@@ -204,12 +242,28 @@ h1 a:hover {
         transform: translateY(0);
     }
 }
+#typing-name::after {
+    content: "|";
+    color: var(--accent-green);
+    margin-left: 4px;
+    animation: blink-cursor 0.8s infinite;
+}
 
+@keyframes blink-cursor {
+    0%, 50% {
+        opacity: 1;
+    }
+
+    51%, 100% {
+        opacity: 0;
+    }
+}
 /* =========================================================
    SOBRE
    ========================================================= */
+
 .sobre {
-    background-color: var(--bg-page);
+    background-color: #f5f5ed;
     padding: 100px 0;
 }
 
@@ -220,11 +274,13 @@ h1 a:hover {
     gap: 60px;
 }
 
+/* ---------- Texto ---------- */
+
 .section-tag {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-size: 0.85em;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--accent-green);
     margin-bottom: 10px;
 }
@@ -238,7 +294,7 @@ h1 a:hover {
 .sobre-text p {
     font-size: 1.05em;
     line-height: 1.7;
-    color: #3a3f36;
+    color: black;
     margin-bottom: 18px;
 }
 
@@ -246,39 +302,45 @@ h1 a:hover {
     margin-bottom: 0;
 }
 
-/* Caixa de imagem — substituir por <img> quando tiveres a foto */
-.sobre-image-box {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: 16px;
-    background-color: #e3e3d1;
-    border: 2px dashed #b9b9a2;
+/* ---------- Imagem ---------- */
+
+.sobre-image {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+
+.sobre-image-box {
+    width: min(100%, 360px);
+    border-radius: 18px;
     overflow: hidden;
+
+    background-color: #e3e3d1;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
 }
 
 .sobre-image-box img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 14px;
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+}
+.sobre-image-box {
+    width: min(100%, 400px);
 }
 
-.sobre-image-placeholder {
-    font-size: 1.1em;
-    color: #8c8c78;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+/* ---------- Animação ---------- */
 
-/* Animação de revelação ao rolar até à secção */
 .reveal {
     opacity: 0;
     transform: translateY(28px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
 }
 
 .reveal.is-visible {
@@ -399,7 +461,7 @@ h1 a:hover {
 /* =========================================================
    PROJETOS
    ========================================================= */
- ========================================================= */
+ /*========================================================= */
 .projetos {
     background-color: var(--bg-page);
     padding: 100px 0;
@@ -634,3 +696,415 @@ footer {
         transform: none;
     }
 }
+
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+
+.contato {
+    background-color: var(--bg-page);
+    padding: 100px 0;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+   ========================================================= */
+
+.contato .section-header {
+    margin-bottom: 45px;
+}
+
+
+/* =========================================================
+   ÍCONES SOCIAIS
+   ========================================================= */
+
+.contato-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+/* =========================================================
+   BOTÃO SOCIAL
+   ========================================================= */
+
+.social-link {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;
+
+    border: 1px solid rgba(29, 37, 43, 0.08);
+    border-radius: 15px;
+
+    box-shadow:
+        0 6px 18px rgba(29, 37, 43, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+/* =========================================================
+   ÍCONE
+   ========================================================= */
+
+.social-link img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    display: block;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.social-link:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--accent-green);
+
+    box-shadow:
+        0 12px 25px rgba(3, 140, 76, 0.18);
+}
+
+
+.social-link:hover img {
+    transform: scale(1.12);
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+.social-link:focus-visible {
+    outline: 3px solid rgba(3, 140, 76, 0.25);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .contato {
+        padding: 70px 0;
+    }
+
+    .contato-social {
+        gap: 16px;
+    }
+
+    .social-link {
+        width: 54px;
+        height: 54px;
+    }
+
+    .social-link img {
+        width: 26px;
+        height: 26px;
+    }
+
+}
+
+
+/* =========================================================
+   ECRÃS PEQUENOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .contato {
+        padding: 60px 0;
+    }
+
+    .contato-social {
+        gap: 12px;
+    }
+
+    .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+
+    .social-link img {
+        width: 23px;
+        height: 23px;
+    }
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    background-color: var(--header-gradient-start);
+    color: #ffffff;
+
+    padding: 70px 0 25px;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================= */
+
+.footer-content {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr
+        0.7fr
+        0.8fr;
+
+    gap: 70px;
+
+    padding-bottom: 50px;
+}
+
+
+/* =========================================================
+   MARCA
+   ========================================================= */
+
+.footer-logo {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: #ffffff;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.footer-brand p {
+    max-width: 350px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    line-height: 1.7;
+
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   TÍTULOS
+   ========================================================= */
+
+.footer h3 {
+    margin-bottom: 20px;
+
+    color: #ffffff;
+
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 11px;
+}
+
+
+.footer-nav a {
+    width: fit-content;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 0.9rem;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.footer-nav a:hover {
+    color: #ffffff;
+
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   REDES SOCIAIS
+   ========================================================= */
+
+.footer-social-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.footer-social-links a {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background-color:
+        rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease;
+}
+
+
+.footer-social-links a:hover {
+    transform: translateY(-4px);
+
+    background-color:
+        var(--accent-green);
+}
+
+
+.footer-social-links img {
+    width: 19px;
+    height: 19px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   PARTE INFERIOR
+   ========================================================= */
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 25px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.footer-bottom p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.8rem;
+}
+
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 0.8rem;
+
+    text-decoration: none;
+
+    transition:
+        color 0.25s ease;
+}
+
+
+.footer-bottom a:hover {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .footer-content {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 45px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .footer {
+        padding-top: 55px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding-bottom: 35px;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+}
+
+

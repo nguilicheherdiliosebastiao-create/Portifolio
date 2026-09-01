@@ -81,5 +81,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
         revealEls.forEach(el => revealObserver.observe(el));
     }
+    const typingName = document.getElementById('typing-name');
+
+if (typingName) {
+
+    const text = typingName.textContent.trim();
+
+    let index = 0;
+    let isDeleting = false;
+
+    const typingSpeed = 100;
+    const deletingSpeed = 60;
+    const pauseAfterTyping = 1800;
+    const pauseAfterDeleting = 500;
+
+    const typeEffect = () => {
+
+        if (!isDeleting) {
+
+            typingName.textContent = text.substring(0, index + 1);
+            index++;
+
+            if (index === text.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeEffect();
+                }, pauseAfterTyping);
+
+                return;
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+
+        } else {
+
+            typingName.textContent = text.substring(0, index - 1);
+            index--;
+
+            if (index === 0) {
+                isDeleting = false;
+
+                setTimeout(typeEffect, pauseAfterDeleting);
+
+                return;
+            }
+
+            setTimeout(typeEffect, deletingSpeed);
+        }
+    };
+
+    typeEffect();
+}
 
 });
